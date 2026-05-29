@@ -1,0 +1,30 @@
+name:                lambda-interpreter
+version:             0.1.0.0
+
+dependencies:
+- base >= 4.7 && < 5
+- megaparsec           # Pentru parser (lab 12)
+- optparse-applicative # Pentru argumentele din linia de comandă
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - Lambda.AST
+  - Lambda.Reduction
+  - Lambda.Parser
+  - Lambda.Church
+
+executables:
+  lambda-interpreter-exe:
+    main:                Main.hs
+    source-dirs:         app
+    dependencies:
+    - lambda-interpreter
+
+tests:
+  lambda-interpreter-test:
+    main:                Spec.hs
+    source-dirs:         test
+    dependencies:
+    - lambda-interpreter
+    - hspec
